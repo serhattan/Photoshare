@@ -27,4 +27,4 @@ if (isset($_POST['selectedPhotos']) and count($_POST['selectedPhotos']) > 0) {
 }
 
 include "views/footer.php"; 
-header("Location:index.php");
+header("Location:medias.php?id=".$_SESSION["user_groups_id"]);

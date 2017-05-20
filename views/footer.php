@@ -14,13 +14,6 @@
 		imageDirectory: yıldız resminin directory sidir.
 		inputAttr: rating değerini callbackFunction a geçirir.
 		*/
-		$("#rating_star").codexworld_rating_widget({
-			starLength: '4',
-			initialValue: '',
-			callbackFunctionName: 'processRating',
-			imageDirectory: './photos/system/star_highlight.png',
-			inputAttr: 'postID'
-		});
 
 		$(".fancybox").fancybox();
 		$(".fancybox-button").fancybox({

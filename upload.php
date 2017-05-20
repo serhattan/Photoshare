@@ -25,8 +25,9 @@ if (isset($_FILES['photos'])) {
 					-> resizeToBestFit(1200,900)
 					-> save("photos/previews/". $newimagename);
 
-				$sql_added = $conn -> prepare("INSERT INTO medias (user_id, path, added_time) VALUES (?, ?, ? )");
-				$isAdded = $sql_added -> execute([$_SESSION['user_id'], $newimagename, date('Y-m-d H:i:s')]);
+				$sql_added = $conn -> prepare("INSERT INTO medias (user_groups_id, path, added_time) VALUES (?, ?, ? )");
+				//sql_added içerisindeki user_groups_id kolonuna $_SESSION['user_id'] değeri insert ediliyordu
+				$isAdded = $sql_added -> execute([$_SESSION['user_groups_id'], $newimagename, date('Y-m-d H:i:s')]);
 
 				if ($isAdded) {					
 					Alert::addMessage("BAŞARILI: ". $originName ." isimli fotoğrafınız başarıyla yüklendi ve veritabanına kaydedildi.");
@@ -41,4 +42,7 @@ if (isset($_FILES['photos'])) {
 }else{	
 	Alert::addMessage("Hata!!! Dosya yüklenemedi. ");
 }
-header("Location: index.php");
+var_dump($_SESSION);
+//
+
+header("Location: medias.php?id=".$_SESSION["user_groups_id"]);

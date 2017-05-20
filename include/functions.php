@@ -2,13 +2,13 @@
 
 //giriş yapılmamışsa yönlendirme fonnksiyonu
 function redirectedIfNotLoggedIn(){
-	if ( ! isset($_SESSION['sessionKullaniciAdi']))
+	if ( ! isset($_SESSION['sessionUserName']))
 		header("Location: login.php");
 }
 
 //giriş yapılmışsa yönlendirme fonksiyonu
 function redirectedIfLoggedIn(){
-	if (isset($_SESSION['sessionKullaniciAdi']))
+	if (isset($_SESSION['sessionUserName']))
 		header("Location: index.php");
 }
 

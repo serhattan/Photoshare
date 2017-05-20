@@ -12,12 +12,3 @@ body{
 	margin-top:12%;
 	max-width:450px;
 }
-.container .photo-share-logo img{
-	margin-bottom: 8px;
-	max-height: 50px;
-	max-width: 50px;
-}
-.form-signin h1{
-	text-align: center;
-}
-
