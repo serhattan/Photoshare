@@ -21,7 +21,7 @@
 				<div class="collapse navbar-collapse" id="navbarRightSide">
 					<ul class="nav navbar-nav navbar-right">
 						<li>
-						<a href="#" onclick="showForm()" id="addingGroupMember" style="display: none;"><i class="fa fa-plus-circle" aria-hidden="true"></i>
+							<a href="#" onclick="showForm()" id="addingGroupMember" style="display: none;"><i class="fa fa-plus-circle" aria-hidden="true"></i>
 								Grup Üyesi Ekle
 							</a>
 						</li>
@@ -80,8 +80,8 @@
 						</h1>
 					</div>
 					<div class="col-md-3" style="float:right;" >
-						<input type="checkbox" class="selectedBoxes" label="check all"/>Hepsini Seç
-						<button onclick="removePage();" class="btn btn-default" id="removeButtonId" name="removeButton" style="border: none; "><i class="fa fa-trash fa-2x" aria-hidden="true" style="color:#cc0000;"></i></button>
+						<input type="checkbox" class="selectedBoxes" label="check all">Hepsini Seç
+						<button onclick="removePage();" class="btn btn-default" id="removeButtonId" name="removeButton" style="border: transparent; display:none;"><i class="fa fa-trash fa-2x" aria-hidden="true" style="color:#cc0000;"></i></button>
 					</div>
 				</div>
 				<div class="row">

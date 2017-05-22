@@ -8,11 +8,12 @@
 	<script type="text/javascript">
 		<?if ($sql_groups_result[0]['users_id']==$_SESSION['user_id']):?>
 		document.getElementById('addingGroupMember').style.display="block";
+		document.getElementById('removeButtonId').style.display="inline"
 		<?endif;?>
 	</script>
 	<script type="text/javascript">
-		
-		
+
+
 		//create new group show form script
 		function showNewGroup(){
 			document.getElementById('createGroup').style.display="block";
