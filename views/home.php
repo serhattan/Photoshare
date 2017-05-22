@@ -18,8 +18,13 @@
 						Daybreak
 					</a>
 				</div>
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<div class="collapse navbar-collapse" id="navbarRightSide">
 					<ul class="nav navbar-nav navbar-right">
+						<li>
+						<a href="#" onclick="showForm()" id="addingGroupMember" style="display: none;"><i class="fa fa-plus-circle" aria-hidden="true"></i>
+								Grup Üyesi Ekle
+							</a>
+						</li>
 						<li>
 							<a href="exit.php"><i class="fa fa-sign-out" aria-hidden="true">Çıkış Yap</i></a>
 						</li>
@@ -27,9 +32,25 @@
 				</div>
 			</div>
 		</nav>
-		<h2>
+		<h1 style="text-align: center">
 			Hoşgeldin <strong><?=$_SESSION['sessionUserName']?>!</strong><img id='loading' src='./photos/system/loader(64).gif' style='visibility: hidden;'><br>
-		</h2>
+		</h1>
+		<form action="medias.php?id=<?=$_GET['id'];?>" method="post" class="form-horizontal">
+			<div id="showHideDiv" style="display:none;">
+				<div class="row" id="container1">
+					<div class="form-group form-group-lg">
+						<label class="col-sm-2 control-label" for="formGroupInputLarge">Email Adresi</label>
+						<div class="col-sm-8">
+							<input name="memberMail[]" class="form-control" type="email" placeholder="daybreak@hotmail.com" required>
+						</div>
+						<button class="btn btn-primary addField">Add New Field</button>
+					</div>
+				</div>
+				<div class="col-md-12">
+					<button type="submit" class="btn btn-info btn-lg" style="margin-left: 35%;margin-bottom: 50px;">Kaydet</button>
+				</div>
+			</div>
+		</form>
 
 		<? include "./partials/alert.php"; ?>
 

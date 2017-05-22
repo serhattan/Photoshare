@@ -26,5 +26,5 @@ if (isset($_POST['selectedPhotos']) and count($_POST['selectedPhotos']) > 0) {
 	Alert::addMessage("!!!Fotoğraf silme işlemi başarısız. Lütfen silmek için en az bir tane fotoğraf seçiniz.  ");
 }
 
-include "views/footer.php"; 
 header("Location:medias.php?id=".$_SESSION["user_groups_id"]);
+//include "views/footer.php"; 

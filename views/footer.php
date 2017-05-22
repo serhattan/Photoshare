@@ -6,26 +6,61 @@
 	<script type="text/javascript" src="assets/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
 	<script type="text/javascript" src="assets/source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
 	<script type="text/javascript">
-		$(document).ready(function() {	
-			/*
-		startLength: kaç tane yıldız görüntülenmek isteniyor
-		inirialValue: rating değeri sayfa ilk yüklendiğinde kaç olacak (default olarak 0)
-		callbackFunctionName: yıldızlara tıklandığında çağrılmak istenen fonksiyonun yazıldığı yer
-		imageDirectory: yıldız resminin directory sidir.
-		inputAttr: rating değerini callbackFunction a geçirir.
-		*/
+		<?if ($sql_groups_result[0]['users_id']==$_SESSION['user_id']):?>
+		document.getElementById('addingGroupMember').style.display="block";
+		<?endif;?>
+	</script>
+	<script type="text/javascript">
+		
+		
+		//create new group show form script
+		function showNewGroup(){
+			document.getElementById('createGroup').style.display="block";
+		}
+		//Join new group show form script
+		function showJoinNewGroup(){
+			document.getElementById('joinGroup').style.display="block";
+		}
+		//add new member show form script
+		function showForm(){
+			document.getElementById('showHideDiv').style.display="block";
+		}
+		//add new member input area script
+		$(document).ready(function() {
+			var max_fields      = 10;
+			var wrapper         = $("#container1"); 
+			var add_button      = $(".addField"); 
 
-		$(".fancybox").fancybox();
-		$(".fancybox-button").fancybox({
-			prevEffect		: 'none',
-			nextEffect		: 'none',
-			closeBtn		: false,
-			helpers		: {
-				title	: { type : 'inside' },
-				buttons	: {}
-			}
+			var x = 1; 
+			$(add_button).click(function(e){ 
+				e.preventDefault();
+				if(x < max_fields){ 
+					x++; 
+            $(wrapper).append('<div style="margin-bottom:5px;"><label class="col-sm-2 control-label" for="formGroupInputLarge">Email Adresi</label><div class="col-sm-8"><input name="memberMail[]" class="form-control" type="email" placeholder="daybreak@hotmail.com" required="required"></div><button href="#" class="btn btn-danger delete">Delete</button></div>'); //add input box
+        }
+        else
+        {
+        	alert('Aynı anda maksimum 10 kullanıcı girebilirsiniz.')
+        }
+    });
+
+			$(wrapper).on("click",".delete", function(e){ 
+				e.preventDefault(); $(this).parent('div').remove(); x--;
+			})
 		});
-	});		
+
+		$(document).ready(function() {	
+			$(".fancybox").fancybox();
+			$(".fancybox-button").fancybox({
+				prevEffect		: 'none',
+				nextEffect		: 'none',
+				closeBtn		: false,
+				helpers		: {
+					title	: { type : 'inside' },
+					buttons	: {}
+				}
+			});
+		});		
 		function removePage() {
 			form=document.getElementById('exportId');
 			form.action='remove.php';
@@ -110,25 +145,6 @@
 			});
 		});
 
-
-		// rating değer ajax ile gönderilir
-		function processRating(val, attrVal){
-			$.ajax({
-				type: 'POST',
-				url:'rating.php',
-				data: 'postID='+attrVal+'&ratingPoints='+val,
-				dataType: 'json',
-				success : function(data) {
-					if (data.status == 'ok') {
-						$('#avgrat').text(data.rating_average);
-						$('#totalrat').text(data.rating_number);
-					}else{
-						alert('Bir hata oluştu. Daha sonra tekrar deneyiniz.');
-					}
-				}
-			});
-		}
 	</script>
-
 </body>
 </html>
