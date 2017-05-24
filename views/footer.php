@@ -8,12 +8,17 @@
 	<script type="text/javascript">
 		<?if ($sql_groups_result[0]['users_id']==$_SESSION['user_id']):?>
 		document.getElementById('addingGroupMember').style.display="block";
-		document.getElementById('removeButtonId').style.display="inline"
+		document.getElementById('deleteGroup').style.display="block";
+		document.getElementById('removeFotoButtonId').style.display="inline";
+		document.getElementById('showGroupMember').style.display="block";
 		<?endif;?>
 	</script>
 	<script type="text/javascript">
 
-
+		//list group member div script
+		function showGroupMember(){
+			document.getElementById('groupMembersList').style.display="block";
+		}
 		//create new group show form script
 		function showNewGroup(){
 			document.getElementById('createGroup').style.display="block";

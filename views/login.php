@@ -10,9 +10,9 @@
 				</span>
 			</h1>
 			<label><i class="fa fa-user" aria-hidden="true"></i> Kullanıcı Adı: </label>
-			<input type="text" name="username" placeholder="user" class="form-control" required>
+			<input type="text" name="useremail" placeholder="user" class="form-control" required>
 			<label for="inputPassword"><i class="fa fa-key" aria-hidden="true"></i> Şifre: </label>
-			<input type="password" name="userpassword" placeholder="1234" id="inputPassword" class="form-control" placeholder="" required>
+			<input type="password" name="userpassword" placeholder="1234" id="inputPassword" class="form-control" required>
 			<div class="checkbox"></div>
 			<button class="btn btn-lg btn-primary btn-block" type="submit" name="buttonname" style="opacity: 0.6;"><i class="fa fa-sign-in" aria-hidden="true"> Giriş Yap</i></button><br>
 		</form>
