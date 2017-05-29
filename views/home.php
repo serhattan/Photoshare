@@ -1,6 +1,5 @@
 <? include "header.php";?>
 <link rel="stylesheet" type="text/css" href="assets/css/home.css">
-
 </head>
 <body>
 	<div class="container" style="margin-top: 50px;">
@@ -105,13 +104,15 @@
 				</div>
 				<div class="row">
 					<?foreach($sql_photos_result as $photo): ?> 
-					<div class="col-md-2">
+					<div class="col-md-2" style="margin-top:3%;">
 						<input type="checkbox" class="checkboxes"	name="selectedPhotos[]" value="<?=$photo['id']?>" style="width: 20px; height: 20px;">
-						<a class="fancybox fancybox-button" rel="group" href="<?="photos/previews/".$photo['path'];?>">
+						<a class="fancybox" rel="group" id="imgB" href="<?="photos/previews/".$photo['path'];?>">
 							<img src="<?="photos/thumbnails/".$photo['path'];?>" class="img-thumbnail main-img" rel="group">
+							<a href="comments.php?ugid=<?=$sql_groups_result[0]['id']?>&pth=<?="photos/previews/".$photo['path'];?>&pid=<?=$photo['id']?>" class="btn btn-info" style="width: 100%;">Yorumlar</a>
 						</a>
 					</div>
-				<? endforeach; ?> 
+				<? endforeach; ?>
+				<!---->
 			</div>
 		</div>
 	</form>

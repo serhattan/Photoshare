@@ -9,7 +9,7 @@ $user_groups_id=explode('=', $_SERVER["QUERY_STRING"]);
 $_SESSION['user_groups_id']=$user_groups_id[1];
 
 //we take group id
-$sql_groups = $conn -> query("SELECT user_groups.groups_id, groups.users_id, groups.name FROM user_groups INNER JOIN groups ON user_groups.groups_id=groups.id WHERE user_groups.id=".$_GET['id']);
+$sql_groups = $conn -> query("SELECT user_groups.id, user_groups.groups_id, groups.users_id, groups.name FROM user_groups INNER JOIN groups ON user_groups.groups_id=groups.id WHERE user_groups.id=".$_GET['id']);
 $sql_groups_result = $sql_groups->fetchAll();
 
 //we check the user is admin or not

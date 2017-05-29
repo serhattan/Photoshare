@@ -42,7 +42,4 @@ if (isset($_FILES['photos'])) {
 }else{	
 	Alert::addMessage("Hata!!! Dosya yüklenemedi. ");
 }
-var_dump($_SESSION);
-//
-
 header("Location: medias.php?id=".$_SESSION["user_groups_id"]);

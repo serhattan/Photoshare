@@ -5,6 +5,16 @@
 	<script type="text/javascript" src="assets/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 	<script type="text/javascript" src="assets/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
 	<script type="text/javascript" src="assets/source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
+	<div id="fb-root"></div>
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) return;
+		js = d.createElement(s); js.id = id;
+		js.src = "//connect.facebook.net/tr_TR/sdk.js#xfbml=1&version=v2.9&appId=1722504484432309";
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+
 	<script type="text/javascript">
 		<?if ($sql_groups_result[0]['users_id']==$_SESSION['user_id']):?>
 		document.getElementById('addingGroupMember').style.display="block";
@@ -14,6 +24,27 @@
 		<?endif;?>
 	</script>
 	<script type="text/javascript">
+
+		$(document).ready(function() {
+			$("a#imgB").fancybox({
+				'href': 'image/imgC.jpg'           
+			});
+			$(".fancybox").fancybox({
+				minWidth:320,
+				helpers: {
+					title: {
+						type: "inside"
+					}
+				},
+				beforeShow: function(){
+					this.title = ''
+				},
+				afterShow: function () {
+					FB.XFBML.parse();
+					$.fancybox.update();
+				}
+			});
+		});	
 
 		//list group member div script
 		function showGroupMember(){
@@ -42,31 +73,19 @@
 				e.preventDefault();
 				if(x < max_fields){ 
 					x++; 
-            $(wrapper).append('<div style="margin-bottom:5px;"><label class="col-sm-2 control-label" for="formGroupInputLarge">Email Adresi</label><div class="col-sm-8"><input name="memberMail[]" class="form-control" type="email" placeholder="daybreak@hotmail.com" required="required"></div><button href="#" class="btn btn-danger delete">Delete</button></div>'); //add input box
-        }
-        else
-        {
-        	alert('Aynı anda maksimum 10 kullanıcı girebilirsiniz.')
-        }
-    });
+					$(wrapper).append('<div style="margin-bottom:5px;"><label class="col-sm-2 control-label" for="formGroupInputLarge">Email Adresi</label><div class="col-sm-8"><input name="memberMail[]" class="form-control" type="email" placeholder="daybreak@hotmail.com" required="required"></div><button href="#" class="btn btn-danger delete">Delete</button></div>');
+				}
+				else
+				{
+					alert('Aynı anda maksimum 10 kullanıcı girebilirsiniz.')
+				}
+			});
 
 			$(wrapper).on("click",".delete", function(e){ 
 				e.preventDefault(); $(this).parent('div').remove(); x--;
 			})
 		});
 
-		$(document).ready(function() {	
-			$(".fancybox").fancybox();
-			$(".fancybox-button").fancybox({
-				prevEffect		: 'none',
-				nextEffect		: 'none',
-				closeBtn		: false,
-				helpers		: {
-					title	: { type : 'inside' },
-					buttons	: {}
-				}
-			});
-		});		
 		function removePage() {
 			form=document.getElementById('exportId');
 			form.action='remove.php';

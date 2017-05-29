@@ -10,7 +10,7 @@
 				</span>
 			</h1>
 			<label><i class="fa fa-user" aria-hidden="true"></i> Kullanıcı Adı: </label>
-			<input type="text" name="useremail" placeholder="user" class="form-control" required>
+			<input type="text" name="useremail" placeholder="user@gmail.com" class="form-control" required>
 			<label for="inputPassword"><i class="fa fa-key" aria-hidden="true"></i> Şifre: </label>
 			<input type="password" name="userpassword" placeholder="1234" id="inputPassword" class="form-control" required>
 			<div class="checkbox"></div>
