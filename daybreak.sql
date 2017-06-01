@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 20 May 2017, 22:09:39
+-- Üretim Zamanı: 01 Haz 2017, 08:10:44
 -- Sunucu sürümü: 10.1.10-MariaDB
 -- PHP Sürümü: 5.6.19
 
@@ -23,20 +23,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `comments`
---
-
-CREATE TABLE `comments` (
-  `id` int(11) UNSIGNED NOT NULL,
-  `users_id` int(11) UNSIGNED NOT NULL,
-  `medias_id` int(11) UNSIGNED NOT NULL,
-  `comment` text NOT NULL,
-  `added_time` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Tablo için tablo yapısı `groups`
 --
 
@@ -51,11 +37,10 @@ CREATE TABLE `groups` (
 --
 
 INSERT INTO `groups` (`id`, `users_id`, `name`) VALUES
-(2, 3, 'Penguen karikatürleri'),
-(3, 3, 'Kafa Dergisi çizerlerin eskizleri'),
-(4, 3, 'Yapı Kredi Yayınları Kapak Fotoğrafları'),
-(5, 4, 'Yaşar Kemal Fotoğrafları'),
-(6, 4, 'Vivaldi Albüm Kapakları');
+(38, 3, 'User Group 1'),
+(39, 3, 'User Group 2'),
+(41, 4, 'Deneme Group'),
+(42, 3, 'User deneme');
 
 -- --------------------------------------------------------
 
@@ -68,6 +53,18 @@ CREATE TABLE `group_members` (
   `groups_id` int(11) UNSIGNED NOT NULL,
   `members_mail` varchar(120) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Tablo döküm verisi `group_members`
+--
+
+INSERT INTO `group_members` (`id`, `groups_id`, `members_mail`) VALUES
+(1, 39, 'test@hotmail.com'),
+(3, 41, 'user@gmail.com'),
+(4, 38, 'serhattan@hotmail.com'),
+(5, 38, 'testuser@hotmail.com'),
+(6, 42, 'testuser@hotmail.com'),
+(8, 42, 'deneme@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -123,29 +120,17 @@ CREATE TABLE `user_groups` (
 --
 
 INSERT INTO `user_groups` (`id`, `users_id`, `groups_id`) VALUES
-(1, 3, 2),
-(8, 3, 3),
-(9, 3, 4),
-(10, 4, 5),
-(11, 4, 6),
-(12, 4, 2),
-(13, 4, 3),
-(14, 3, 5),
-(15, 3, 6),
-(17, 5, 5),
-(18, 5, 2);
+(71, 3, 38),
+(72, 3, 39),
+(74, 5, 39),
+(77, 3, 41),
+(78, 4, 38),
+(79, 6, 38),
+(80, 3, 42);
 
 --
 -- Dökümü yapılmış tablolar için indeksler
 --
-
---
--- Tablo için indeksler `comments`
---
-ALTER TABLE `comments`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `users_id` (`users_id`),
-  ADD KEY `medias_id` (`medias_id`);
 
 --
 -- Tablo için indeksler `groups`
@@ -187,25 +172,20 @@ ALTER TABLE `user_groups`
 --
 
 --
--- Tablo için AUTO_INCREMENT değeri `comments`
---
-ALTER TABLE `comments`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
---
 -- Tablo için AUTO_INCREMENT değeri `groups`
 --
 ALTER TABLE `groups`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 --
 -- Tablo için AUTO_INCREMENT değeri `group_members`
 --
 ALTER TABLE `group_members`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- Tablo için AUTO_INCREMENT değeri `medias`
 --
 ALTER TABLE `medias`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=129;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- Tablo için AUTO_INCREMENT değeri `users`
 --
@@ -215,17 +195,10 @@ ALTER TABLE `users`
 -- Tablo için AUTO_INCREMENT değeri `user_groups`
 --
 ALTER TABLE `user_groups`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 --
 -- Dökümü yapılmış tablolar için kısıtlamalar
 --
-
---
--- Tablo kısıtlamaları `comments`
---
-ALTER TABLE `comments`
-  ADD CONSTRAINT `medias-comments-fk` FOREIGN KEY (`medias_id`) REFERENCES `medias` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `users-comments-fk` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Tablo kısıtlamaları `groups`

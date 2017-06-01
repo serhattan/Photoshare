@@ -9,10 +9,10 @@
 					Daybreak
 				</span>
 			</h1>
-			<label><i class="fa fa-user" aria-hidden="true"></i> Kullanıcı Adı: </label>
-			<input type="text" name="useremail" placeholder="user@gmail.com" class="form-control" required>
-			<label for="inputPassword"><i class="fa fa-key" aria-hidden="true"></i> Şifre: </label>
-			<input type="password" name="userpassword" placeholder="1234" id="inputPassword" class="form-control" required>
+			<label><i class="fa fa-user" aria-hidden="true"></i> Email: </label>
+			<input type="email" name="useremail" placeholder="Email Adresinizi Giriniz" class="form-control" required>
+			<label for="inputPassword"><i class="fa fa-key" aria-hidden="true"></i> Parola: </label>
+			<input type="password" name="userpassword" placeholder="Parolanızı Giriniz" id="inputPassword" class="form-control" required>
 			<div class="checkbox"></div>
 			<button class="btn btn-lg btn-primary btn-block" type="submit" name="buttonname" style="opacity: 0.6;"><i class="fa fa-sign-in" aria-hidden="true"> Giriş Yap</i></button><br>
 		</form>
